@@ -89,7 +89,9 @@ describe('SignUp Controller', () => {
 
 describe('SignUp Controller', () => {
   test('should return 400 if invalid email is provided', () => {
-    const { sut } = makeSut()
+    const { sut,emailValidatorStub } = makeSut()
+    //uma maneira de mockar uma função ou metodo 
+    jest.spyOn(emailValidatorStub,'isValid').mockReturnValue(false)
     const httpRequest = {
       body: {
         name: 'any_name',
